@@ -1,7 +1,0 @@
-[package]
-name = "feature_test"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-rdkafka = { version = "0.25", features = ["cmake-build"] }

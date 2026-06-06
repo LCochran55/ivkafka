@@ -3,12 +3,10 @@ use rdkafka::consumer::{Consumer, StreamConsumer};
 use rdkafka::Message;
 use futures::StreamExt;
 
-async fn run_consumer() {
-    // Create a streaming consumer that yields messages as a stream
+pub fn create_consumer(config: SimulationConfig) {
     let consumer: StreamConsumer = ClientConfig::new()
-        .set("bootstrap.servers", "localhost:9092")
+        .set("bootstrap.servers", config.broker)
         .set("group.id", "iVerilog_stream")
-        // Start from earliest message if no offset exists
         .set("auto.offset.reset", "earliest")
         // Enable automatic offset commits
         .set("enable.auto.commit", "true")
@@ -16,11 +14,26 @@ async fn run_consumer() {
         .create()
         .expect("Failed to create consumer");
 
-    // Subscribe to one or more topics
+    // Subscribe to topic
     consumer
-        .subscribe(&["vcd-topic"])
+        .subscribe(config.topic)
         .expect("Failed to subscribe");
+}
 
+
+pub fn poll_messages(consumer){
+
+}
+
+pub fn docker_setup() {
+    //checks if Kafka is running inside a Docker container and gets the broker address 
+
+}
+
+fn run_consumer() {
+//No
+
+    // Create a streaming consumer that yields messages as a stream
     // Process messages as they arrive
     let mut stream = consumer.stream();
     while let Some(result) = stream.next().await {
