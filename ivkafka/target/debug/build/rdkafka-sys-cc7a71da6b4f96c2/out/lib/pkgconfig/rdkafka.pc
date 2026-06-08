@@ -1,0 +1,12 @@
+prefix=/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: librdkafka
+Description: The Apache Kafka C/C++ library
+Version: 1.6.0
+Requires: zlib 
+Cflags: -I${includedir}
+Libs: -L${libdir} -lrdkafka
+Libs.private: -lpthread -lrt -ldl -lm

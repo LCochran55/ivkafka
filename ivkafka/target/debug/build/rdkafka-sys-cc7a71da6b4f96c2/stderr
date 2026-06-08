@@ -1,0 +1,18 @@
+Building and linking librdkafka statically
+running: cd "/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/build" && CMAKE_PREFIX_PATH="" LC_ALL="C" "cmake" "/home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rdkafka-sys-3.0.0+1.6.0/librdkafka" "-B" "/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/build" "-DRDKAFKA_BUILD_STATIC=1" "-DRDKAFKA_BUILD_TESTS=0" "-DRDKAFKA_BUILD_EXAMPLES=0" "-DCMAKE_INSTALL_LIBDIR=lib" "-DWITH_ZLIB=1" "-DWITH_SSL=0" "-DWITH_SASL=0" "-DWITH_ZSTD=0" "-DENABLE_LZ4_EXT=0" "-DCMAKE_INSTALL_PREFIX=/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64 -w" "-DCMAKE_C_COMPILER=/usr/bin/cc" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64 -w" "-DCMAKE_CXX_COMPILER=/usr/bin/c++" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64 -w" "-DCMAKE_ASM_COMPILER=/usr/bin/cc" "-DCMAKE_BUILD_TYPE=Debug"
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_ASM_COMPILER
+    CMAKE_ASM_FLAGS
+
+
+running: cd "/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/build" && LC_ALL="C" MAKEFLAGS="-j --jobserver-fds=9,11 --jobserver-auth=9,11" "cmake" "--build" "/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/build" "--target" "install" "--config" "Debug"

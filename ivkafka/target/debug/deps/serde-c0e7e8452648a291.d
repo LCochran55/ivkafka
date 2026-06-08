@@ -1,0 +1,14 @@
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/deps/serde-c0e7e8452648a291.d: /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/serde-0c79bc1bb5bf9eba/out/private.rs
+
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/deps/libserde-c0e7e8452648a291.rlib: /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/serde-0c79bc1bb5bf9eba/out/private.rs
+
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/deps/libserde-c0e7e8452648a291.rmeta: /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/serde-0c79bc1bb5bf9eba/out/private.rs
+
+/home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/home/liamc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/serde-0c79bc1bb5bf9eba/out/private.rs:
+
+# env-dep:OUT_DIR=/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/serde-0c79bc1bb5bf9eba/out

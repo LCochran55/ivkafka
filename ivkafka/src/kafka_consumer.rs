@@ -195,5 +195,13 @@ async fn create_container(docker: &Docker) -> Result<()> {
             _ => (),
         }
     }
+
+    /*
+    tokio::join!(
+    poll_messages(consumer, tx),   // receives kafka messages, sends to channel
+    writer_task(rx, stdin),        // receives from channel, writes to python stdin
+    python_subprocess,             // python process running concurrently
+    )
+     */
     Ok(())
 }

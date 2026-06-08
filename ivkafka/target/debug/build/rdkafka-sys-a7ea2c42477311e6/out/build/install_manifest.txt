@@ -1,0 +1,13 @@
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/cmake/RdKafka/RdKafkaConfig.cmake
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/cmake/RdKafka/RdKafkaConfigVersion.cmake
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/cmake/RdKafka/FindLZ4.cmake
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/cmake/RdKafka/RdKafkaTargets.cmake
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/cmake/RdKafka/RdKafkaTargets-debug.cmake
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/share/licenses/librdkafka/LICENSES.txt
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/pkgconfig/rdkafka-static.pc
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/librdkafka.a
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/include/librdkafka/rdkafka.h
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/include/librdkafka/rdkafka_mock.h
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/pkgconfig/rdkafka++-static.pc
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/lib/librdkafka++.a
+/home/liamc/internship_2026/ivkafka/ivkafka/target/debug/build/rdkafka-sys-a7ea2c42477311e6/out/include/librdkafka/rdkafkacpp.h

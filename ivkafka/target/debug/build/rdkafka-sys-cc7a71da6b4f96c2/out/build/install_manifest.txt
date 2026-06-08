@@ -1,0 +1,15 @@
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/cmake/RdKafka/RdKafkaConfig.cmake
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/cmake/RdKafka/RdKafkaConfigVersion.cmake
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/cmake/RdKafka/FindLZ4.cmake
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/cmake/RdKafka/RdKafkaTargets.cmake
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/cmake/RdKafka/RdKafkaTargets-debug.cmake
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/share/licenses/librdkafka/LICENSES.txt
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/pkgconfig/rdkafka.pc
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/pkgconfig/rdkafka.pc
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/librdkafka.a
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/include/librdkafka/rdkafka.h
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/include/librdkafka/rdkafka_mock.h
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/pkgconfig/rdkafka++.pc
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/pkgconfig/rdkafka.pc
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/lib/librdkafka++.a
+/home/liamc/internship_2026/feature_stream/feature_test/target/debug/build/rdkafka-sys-cc7a71da6b4f96c2/out/include/librdkafka/rdkafkacpp.h
