@@ -19,3 +19,36 @@
 //  clusters registers based off of hamming distance (?) idk
 //  then when python is done I think it returns to rust thru stdout
 
+use tokio::sync::mpsc;
+use tokio::io::AsyncWriteExt;
+use tokio::process::Command;
+
+use std::process::Stdio;
+
+use anyhow::Result;
+
+
+pub async fn mpsc_writer(mut rx: mpsc::Receiver<String>) -> Result<() >{
+     let mut child = Command::new("python3")
+        .arg("process_stdin.py")
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped()) // capture python's output for later
+        .spawn()?;
+
+    let mut child_stdin = child
+        .stdin
+        .take()
+        .expect("Failed to open python stdin");
+
+    while let Some(msg) = rx.recv().await {
+        child_stdin
+            .write(format!("{}\n", msg).as_bytes())
+            .await?;
+
+    }
+
+    drop(child_stdin);
+    child.wait().await?;
+
+    Ok(())
+}

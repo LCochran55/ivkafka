@@ -10,6 +10,7 @@ use bollard::Docker;
 use bollard::container::LogOutput;
 use bollard::models::*;
 
+use tokio::sync::mpsc;
 use tokio::sync::oneshot;
 use tokio::time::{Duration, sleep, timeout};
 
@@ -38,7 +39,7 @@ pub fn create_consumer(config: &SimulationConfig) -> StreamConsumer {
     return consumer;
 }
 
-pub async fn poll_messages(consumer: StreamConsumer) -> Result<()> {
+pub async fn poll_messages(consumer: StreamConsumer, tx: mpsc::Sender<String>) -> Result<()> {
     let mut stream = consumer.stream();
     loop {
         match timeout(Duration::from_secs(5), stream.next()).await {
@@ -49,6 +50,11 @@ pub async fn poll_messages(consumer: StreamConsumer) -> Result<()> {
                         .map(|p| String::from_utf8_lossy(p).to_string())
                         .unwrap_or_default();
                     println!("{}", payload);
+
+                    if tx.send(payload).await.is_err() {
+                        eprintln!("Receiver dropped, stopping poll.");
+                        break;
+                    }
                 }
                 Err(rdkafka::error::KafkaError::MessageConsumption(
                     rdkafka::types::RDKafkaErrorCode::BrokerTransportFailure,
@@ -196,12 +202,5 @@ async fn create_container(docker: &Docker) -> Result<()> {
         }
     }
 
-    /*
-    tokio::join!(
-    poll_messages(consumer, tx),   // receives kafka messages, sends to channel
-    writer_task(rx, stdin),        // receives from channel, writes to python stdin
-    python_subprocess,             // python process running concurrently
-    )
-     */
     Ok(())
 }

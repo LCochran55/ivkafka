@@ -4,6 +4,9 @@ use std::path::PathBuf;
 use ivkafka::config::SimulationConfig;
 use ivkafka::kafka_consumer;
 use ivkafka::verilog;
+use ivkafka::stream_to_py;
+
+use tokio::sync::mpsc;
 
 use anyhow::Error;
 
@@ -59,12 +62,16 @@ async fn main() -> Result<(), anyhow::Error> {
     kafka_consumer::docker_startup().await?;
     let consumer = kafka_consumer::create_consumer(&simulation);
 
+    let (tx, rx) = mpsc::channel(256);
+
     let vvp = verilog::compile_verilog(file_sources, &simulation)
         .expect("Failed to compile verilog files");
 
-    tokio::join!(kafka_consumer::poll_messages(consumer), async {
-        verilog::run_simulation(vvp, &simulation);
-    });
+    tokio::join!(
+        kafka_consumer::poll_messages(consumer, tx),
+        stream_to_py::mpsc_writer(rx),
+        async { verilog::run_simulation(vvp, &simulation) },
+    );
 
     Ok(())
 }
