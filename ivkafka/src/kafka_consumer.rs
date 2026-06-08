@@ -2,24 +2,26 @@ use crate::config::SimulationConfig;
 
 use rdkafka::Message;
 use rdkafka::config::ClientConfig;
+use rdkafka::consumer::CommitMode;
 use rdkafka::consumer::{Consumer, StreamConsumer};
+use rdkafka::error::KafkaError;
 
 use bollard::Docker;
 use bollard::container::LogOutput;
 use bollard::models::*;
 
-use tokio::time::{Duration, sleep};
+use tokio::sync::oneshot;
+use tokio::time::{Duration, sleep, timeout};
 
 use std::collections::HashMap;
 
 use futures_util::stream::StreamExt;
 use futures_util::stream::TryStreamExt;
 
+use anyhow::Error;
 use anyhow::Result;
 
 pub fn create_consumer(config: &SimulationConfig) -> StreamConsumer {
-    println!("Create_conumser");
-
     let consumer: StreamConsumer = ClientConfig::new()
         .set("bootstrap.servers", &config.broker_address)
         .set("group.id", "iVerilog_stream")
@@ -36,23 +38,39 @@ pub fn create_consumer(config: &SimulationConfig) -> StreamConsumer {
     return consumer;
 }
 
-pub async fn poll_messages(consumer: StreamConsumer) {
+pub async fn poll_messages(consumer: StreamConsumer) -> Result<()> {
     let mut stream = consumer.stream();
-    while let Some(result) = stream.next().await {
-        match result {
-            Ok(msg) => {
-                println!("Received message: {:?}", msg);
-            }
-            Err(rdkafka::error::KafkaError::MessageConsumption(
-                rdkafka::types::RDKafkaErrorCode::BrokerTransportFailure,
-            )) => {
-                eprintln!("Retrying broker in 2s...");
-                sleep(Duration::from_secs(2)).await;
+    loop {
+        match timeout(Duration::from_secs(5), stream.next()).await {
+            Ok(Some(result)) => match result {
+                Ok(msg) => {
+                    let payload = msg
+                        .payload()
+                        .map(|p| String::from_utf8_lossy(p).to_string())
+                        .unwrap_or_default();
+                    println!("{}", payload);
+                }
+                Err(rdkafka::error::KafkaError::MessageConsumption(
+                    rdkafka::types::RDKafkaErrorCode::BrokerTransportFailure,
+                )) => {
+                    eprintln!("Retrying broker in 2s...");
+                    sleep(Duration::from_secs(2)).await;
+                    break;
+                }
+                Err(e) => {
+                    eprintln!("Error: {}", e);
+                    break;
+                }
+            },
+            Err(_) => {
+                println!("No new messages, stream idle. Flushing and exiting.");
+                consumer.commit_consumer_state(CommitMode::Sync);
                 break;
             }
-            Err(e) => eprintln!("Error: {}", e),
+            Ok(None) => break,
         }
     }
+    Ok(())
 }
 
 const KAFKA_IMAGE: &str = "confluentinc/cp-kafka:latest";
@@ -86,10 +104,9 @@ pub async fn docker_startup() -> Result<String> {
 }
 
 fn build_broker_config() -> ContainerCreateBody {
-    /*
-     let host_config = HostConfig {
+    let host_config = HostConfig {
         port_bindings: Some(HashMap::from([(
-            "90/tcp".to_string(),
+            "9092/tcp".to_string(),
             Some(vec![PortBinding {
                 host_ip: Some("0.0.0.0".to_string()),
                 host_port: Some("9092".to_string()),
@@ -97,10 +114,10 @@ fn build_broker_config() -> ContainerCreateBody {
         )])),
         ..Default::default()
     };
-     */
 
-     let broker1_config = ContainerCreateBody {
+    let broker1_config = ContainerCreateBody {
         image: Some(String::from(KAFKA_IMAGE)),
+        host_config: Some(host_config),
         cmd: Some(vec![String::from("/etc/confluent/docker/run")]),
         env: Some(vec![
             String::from("KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092"),
